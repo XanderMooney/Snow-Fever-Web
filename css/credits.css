@@ -1,0 +1,23 @@
+ul {
+    color:white;
+    font-weight:500;
+    background: #0000003f;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+a {
+    color: #C0EEF2;
+}
+
+p {
+    font-size: 1rem;
+    width: 75%;
+}
+
+@media (max-aspect-ratio: 1/1) { /* on vertically oriented devices */
+    p {
+        width:calc(100% - 2rem);
+    }
+}

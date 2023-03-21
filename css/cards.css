@@ -1,0 +1,60 @@
+/*#region cards*/
+
+.cardContainer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+    display: grid;
+    justify-content: space-evenly;
+    grid-template-columns: repeat(auto-fit, 27rem);
+    gap: 1rem;
+}
+
+.card {
+    padding: 1rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    background: #E9F8F9;
+    transition: 400ms;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 15rem;
+    object-fit: cover;
+    transition: 400ms;
+}
+
+.card-img-holder {
+    width: 100%;
+    height: 15rem;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.card:hover > .card-img-holder > .card-img-top {
+    transform: scale(1.2);
+}
+
+.card:hover {
+    transform: scale(1.1);
+}
+
+.card > .card-title {
+    transition: 400ms;
+    text-align: center;
+    line-height: 50%;
+}
+
+.card:hover > .card-title {
+    font-size: 200%;
+}
+
+@media (max-aspect-ratio: 1/1) { /* on vertically oriented devices */
+    .cardContainer {
+        grid-template-columns: repeat(auto-fit, 95%);
+        gap: 5vw;
+    }
+}
+
+/*#endregion cards*/

@@ -1,0 +1,75 @@
+.carousel-item, .carousel-img {
+    height: calc(100svh - 3rem);
+}
+.carousel-img {
+    object-fit: cover;
+}
+
+.carousel-caption {
+    background-color: rgba(128, 128, 128, 0.6);
+}
+
+/*.card {
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    padding: 1rem;
+    padding-top: 0;
+    background-color: #C0EEF2;
+}
+
+.card > .card-content {
+    display: grid;
+    gap: 1rem;
+}
+
+.card > h1 {
+    text-align: center;
+    font-size: 3rem;
+    padding-top: 1.5rem;
+}
+
+.card > .card-content > .image-container {
+    width: 100%;
+    min-height: 10rem;
+    max-height: 20rem;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.card > .card-content > .image-container > img {
+    width: 100%;
+    height: 100%;
+    transition: 400ms;
+
+    object-fit: cover;
+}
+
+.card > .card-content > .image-container:hover > img {
+    transform: scale(1.2);
+}
+
+.card > .card-content > .text-container {
+    display: inline-block;
+    width: 100%;
+}
+
+
+@media (min-aspect-ratio: 1/1) { /* on horizontally oriented devices 
+    .card > .card-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-aspect-ratio: 1/1) { /* on vertically oriented devices
+    .card > .card-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (aspect-ratio: 1/1) { /* on square device
+    .card > .card-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+} 
+*/
