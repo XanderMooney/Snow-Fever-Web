@@ -24,7 +24,10 @@
 .spacer {
     height: 3rem;
 }
-
+.centered {
+    text-align: center;
+    justify-self: center;
+}
 html {
     margin: 0;
     padding: 0;

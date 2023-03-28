@@ -32,11 +32,11 @@
     overflow: hidden;
 }
 
-.card:hover > .card-img-holder > .card-img-top {
+.card:not(.nohover):hover > .card-img-holder > .card-img-top {
     transform: scale(1.2);
 }
 
-.card:hover {
+.card:not(.nohover):hover {
     transform: scale(1.05);
 }
 
@@ -46,7 +46,7 @@
     line-height: 50%;
 }
 
-.card:hover > .card-title {
+.card:not(.nohover):hover > .card-title {
     font-size: 200%;
 }
 
