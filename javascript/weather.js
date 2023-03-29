@@ -39,7 +39,7 @@ function requestJQuery() {
         processWeatherData(rawResponse);
     })
     .fail (function() {
-        console.log("JQuery Request failed");
+        document.getElementById('error').innerHTML = 'There was an error with our API; this is likely due to rate limiting. Please try again later.'
     });
 }
 
@@ -65,7 +65,7 @@ function requestJQuery() {
          processWeatherData(rawResponse);
      })
      .fail (function() {
-         console.log("JQuery Request failed");
+        document.getElementById('error').innerHTML = 'There was an error with our API; this is likely due to rate limiting. Please try again later.'
      });
  }
 
