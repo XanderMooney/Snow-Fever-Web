@@ -46,9 +46,53 @@
         <h1>Snow Reports</h1>
     </header>
 
-    <div class="cardContainer">
-        
-    </div>
+    <table>
+        <tr>
+            <td class='day' data-day="0">Sunday</td>
+            <td class='day' data-day="1">Monday</td>
+            <td class='day' data-day="2">Tuesday</td>
+            <td class='day' data-day="3">Wednesday</td>
+            <td class='day' data-day="4">Thursday</td>
+            <td class='day' data-day="5">Friday</td>
+            <td class='day' data-day="6">Saturday</td>
+        </tr>
+        <tr>
+            <td class="weather-icon" data-day="0"></td>
+            <td class="weather-icon" data-day="1"></td>                       
+            <td class="weather-icon" data-day="2"></td>                   
+            <td class="weather-icon" data-day="3"></td>                   
+            <td class="weather-icon" data-day="4"></td>                   
+            <td class="weather-icon" data-day="5"></td>                   
+            <td class="weather-icon" data-day="6"></td>           
+        </tr>
+        <tr>
+            <td class='weather-name' data-day="0"></td>
+            <td class='weather-name' data-day="1"></td>
+            <td class='weather-name' data-day="2"></td>
+            <td class='weather-name' data-day="3"></td>
+            <td class='weather-name' data-day="4"></td>
+            <td class='weather-name' data-day="5"></td>
+            <td class='weather-name' data-day="6"></td>
+        </tr>
+        <tr>
+            <td class='low-temp' data-day="0">Lowest Temp:</td>
+            <td class='low-temp' data-day="1">Lowest Temp:</td>
+            <td class='low-temp' data-day="2">Lowest Temp:</td>
+            <td class='low-temp' data-day="3">Lowest Temp:</td>
+            <td class='low-temp' data-day="4">Lowest Temp:</td>
+            <td class='low-temp' data-day="5">Lowest Temp:</td>
+            <td class='low-temp' data-day="6">Lowest Temp:</td>
+        </tr>
+        <tr>
+            <td class="high-temp" data-day="0">Highest Temp:</td>
+            <td class="high-temp" data-day="1">Highest Temp:</td>
+            <td class="high-temp" data-day="2">Highest Temp:</td>
+            <td class="high-temp" data-day="3">Highest Temp:</td>
+            <td class="high-temp" data-day="4">Highest Temp:</td>
+            <td class="high-temp" data-day="5">Highest Temp:</td>
+            <td class="high-temp" data-day="6">Highest Temp:</td>
+        </tr>
+    </table>
     <p class="centered">if nothing shows up, it is likely due to rate limiting by our weather API. Please try again later.</p>
 
         <script src="javascript/weather.js"></script>

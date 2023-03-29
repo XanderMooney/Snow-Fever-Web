@@ -4,7 +4,7 @@
     font-family: 'Avenir', sans-serif;
 }
 
-/* General Formatting */
+/* #region General Formatting */
 
 .snowflake {
     z-index: -1;
@@ -41,7 +41,19 @@ body {
     overflow-x: hidden;
     min-height: 100vh;
 }
-
+table {
+    background-color: #C0EEF2;
+    width: 80vw;
+    margin-left: 10vw;
+    text-align: center;
+}
+td {
+    border-width: 0px 2px;
+    border-color: #000;
+    border-style: solid;
+    padding: 0.25rem;
+}
+/* #endregion */
 /*#region header*/
 
 header {
@@ -62,7 +74,6 @@ header > h2 > img {
 }
 
 /*#endregion header*/
-
 /*#region navbar*/
 
 nav {
@@ -117,6 +128,9 @@ nav > .navItems {
     
     .navItems {
         text-align: center;
+    }
+    #extraHeader {
+        opacity: 0 !important;
     }
 }
 
@@ -214,7 +228,6 @@ nav > .navItems {
     user-select: none;
 }
 /*#endregion navbar*/
-
 /*#region footer*/
 
 footer {
@@ -264,7 +277,6 @@ footer > .boarderbox > img:first-child.spin-faster {
 }
 
 /*#endregion footer*/
-
 /*#region ending*/
 
 .explosion {
