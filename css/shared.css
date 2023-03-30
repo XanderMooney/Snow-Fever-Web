@@ -28,6 +28,9 @@
     text-align: center;
     justify-self: center;
 }
+.bold {
+    font-weight: bold;
+}
 html {
     margin: 0;
     padding: 0;
