@@ -1,7 +1,7 @@
 let daysSelected = 7;
 
 getWeekdays()
-requestJQuery()
+requestHistoricalJQuery()
 
 function getWeekdays()
 {
@@ -81,7 +81,9 @@ function processWeatherData(response) {
         
         document.querySelector('.weather-icon[data-day="' + i + '"]').innerHTML = '<img src="assets/weather/' + days[i].icon + '.png">'
         document.querySelector('.low-temp[data-day="' + i + '"]').innerHTML = "Lowest Temp: " + days[i].tempmin
+        document.querySelector('.temp[data-day="' + i + '"]').innerHTML = "Temp: " + days[i].temp
         document.querySelector('.high-temp[data-day="' + i + '"]').innerHTML = "Highest Temp: " + days[i].tempmax
-
+        document.querySelector('.windspeed[data-day="' + i + '"]').innerHTML = "Wind Speed: " + days[i].windspeed
+        document.querySelector('.weather-name[data-day="' + i + '"]').innerHTML = days[i].conditions
     }
 }
