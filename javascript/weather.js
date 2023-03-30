@@ -1,18 +1,46 @@
-let daysSelected = 7;
+let daysSelected = 3;
+let historical = false;
+let weatherData = ""
+let historicalWeatherData = ""
+let holder = document.getElementById('weather-holder')
+let mediaState = window.matchMedia("(max-aspect-ratio: 1.5/1)")
 
+mediaCheck()
+mediaState.addListener(mediaCheck)
+generateDays()
 getWeekdays()
-requestHistoricalJQuery()
+requestJQuery()
 
+
+function generateDays()
+{
+    holder.innerHTML = ''
+
+    for (let i = 0; i < daysSelected; ++i)
+    {
+        let el = document.createElement('div')
+        el.classList.add('grid-row')
+        el.dataset.day = i
+        // this would be so cleaner with react but I've already dug my grave
+        el.innerHTML = '<span class="day" data-day="' + i + '">Null</span>' 
+        + '<span class="weather-icon" data-day="' + i + '"></span>' 
+        + '<span class="weather-name bold" data-day="' + i + '">Void</span>' 
+        + '<span class="low-temp align-right" data-day="' + i + '">Lowest Temp:</span>'
+        + '<span class="temp align-right" data-day="' + i + '">Temp:</span>'
+        + '<span class="high-temp align-right" data-day="' + i + '">Highest Temp:</span>'
+        + '<span class="windspeed align-right" data-day="' + i + '">Wind speed:</span>'
+
+        holder.appendChild(el)
+    }
+}
 function getWeekdays()
 {
     let today = new Date();
-    document.querySelector('.day[data-day="0"]').innerHTML = dayToWord(today.getDay());
-    document.querySelector('.day[data-day="1"]').innerHTML = dayToWord((today.getDay() + 1) % 7);
-    document.querySelector('.day[data-day="2"]').innerHTML = dayToWord((today.getDay() + 2) % 7);
-    document.querySelector('.day[data-day="3"]').innerHTML = dayToWord((today.getDay() + 3) % 7);
-    document.querySelector('.day[data-day="4"]').innerHTML = dayToWord((today.getDay() + 4) % 7);
-    document.querySelector('.day[data-day="5"]').innerHTML = dayToWord((today.getDay() + 5) % 7);
-    document.querySelector('.day[data-day="6"]').innerHTML = dayToWord((today.getDay() + 6) % 7);
+
+    for (let i = 0; i < daysSelected; ++i)
+    {
+        document.querySelector('.day[data-day="' + i + '"]').innerHTML = dayToWord((today.getDay() + i) % 7)
+    }
 }
 
 function dayToWord(num)
@@ -35,6 +63,11 @@ function dayToWord(num)
     }
 }
 function requestJQuery() {
+    if (weatherData != "")
+    {
+        processWeatherData(weatherData)
+        return
+    }
     $.get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/80425/next7days?unitGroup=metric&key=GTAYYWQQLFFS6VE7UZR9YUMKJ&contentType=json') .done(function(rawResponse) {
         processWeatherData(rawResponse);
     })
@@ -44,6 +77,11 @@ function requestJQuery() {
 }
 
  function requestHistoricalJQuery() {
+    if (historicalWeatherData != "")
+    {
+        processWeatherData(historicalWeatherData)
+        return
+    }
 
      const date = new Date();
      const laterDate = new Date();
@@ -55,9 +93,9 @@ function requestJQuery() {
      if (laterMonth < 10) laterMonth = '0' + laterMonth;
 
      let day = date.getDate();
-     if (day < 10) day = '0' + day;
+     if (day < 10) { day = '0' + day; }
      let laterDay = laterDate.getDate();
-     if (laterDay < 10) laterDay = '0' + laterDay;
+     if (laterDay < 10) { laterDay = '0' + laterDay; }
      $.get('https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/80425/' 
      + (date.getFullYear() - 1) + '-' + month + '-' + day + '/'
      + (laterDate.getFullYear() - 1) + '-' + laterMonth + '-' + laterDay
@@ -71,13 +109,13 @@ function requestJQuery() {
 
 function processWeatherData(response) {
   
-    var location=response.resolvedAddress;
+    if (historical) historicalWeatherData = response
+    else weatherData = response
+
+    //var location=response.resolvedAddress;
     var days=response.days;
 
-    console.log("Location: " + location);
-
     for (var i=0;i<daysSelected;i++) {
-        console.log(days[i].datetime+": tempmax="+days[i].tempmax+", tempmin="+days[i].tempmin);
         
         document.querySelector('.weather-icon[data-day="' + i + '"]').innerHTML = '<img src="assets/weather/' + days[i].icon + '.png">'
         document.querySelector('.low-temp[data-day="' + i + '"]').innerHTML = "Lowest Temp: " + days[i].tempmin
@@ -87,3 +125,80 @@ function processWeatherData(response) {
         document.querySelector('.weather-name[data-day="' + i + '"]').innerHTML = days[i].conditions
     }
 }
+
+function mediaCheck()
+{
+    if (!mediaState.matches && daysSelected != 1) holder.style.gridTemplateColumns = 'repeat(' + daysSelected +', 1fr)'
+    else 
+    {
+        holder.style.gridTemplateColumns = '1fr'
+        holder.style.gridTemplateRows = 'repeat(' + daysSelected + ', 1fr)'
+    }
+}
+
+// #region buttons
+
+function btnCurrent() {
+    if (!historical) return
+    historical = false;
+    let btn = document.getElementById('btnCurrent')
+    
+    btn.classList.add('selected')
+    document.getElementById('btnHistorical').classList.remove('selected')
+
+    requestJQuery()
+}
+function btnHistorical() {
+    if (historical) return
+    historical = true;
+    let btn = document.getElementById('btnHistorical')
+
+    btn.classList.add('selected')
+    document.getElementById('btnCurrent').classList.remove('selected')
+
+    requestHistoricalJQuery()
+}
+function btnToday() {
+    if (daysSelected == 1) return
+    let btn = document.getElementById('btnToday')
+
+    btn.classList.add('selected')
+    document.getElementById('btnThree').classList.remove('selected')
+    document.getElementById('btnWeek').classList.remove('selected')
+    
+    daysSelected = 1
+    reRequest()
+}
+function btnThree() {
+    if (daysSelected == 3) return
+    let btn = document.getElementById('btnThree')
+
+    btn.classList.add('selected')
+    document.getElementById('btnToday').classList.remove('selected')
+    document.getElementById('btnWeek').classList.remove('selected')
+    
+    daysSelected = 3
+    reRequest()
+}
+function btnWeek() {
+    if (daysSelected == 7) return
+    let btn = document.getElementById('btnWeek')
+
+    btn.classList.add('selected')
+    document.getElementById('btnToday').classList.remove('selected')
+    document.getElementById('btnThree').classList.remove('selected')
+    
+    daysSelected = 7
+    reRequest()
+}
+
+function reRequest()
+{
+    generateDays()
+    getWeekdays()
+    mediaCheck()
+
+    if (historical) requestHistoricalJQuery()
+    else requestJQuery()
+}
+// #endregion

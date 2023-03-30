@@ -6,12 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="TF-edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather Forecast</title>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" />
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/shared.css"/>
+    <!-- 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootsdivap@5.2.3/dist/css/bootsdivap.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/bootsdivap@5.2.3/dist/js/bootsdivap.bundle.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/shared.css" />
     <link rel="stylesheet" href="css/reports.css">
 </head>
 
@@ -20,13 +20,13 @@
     <nav>
         <div class="navBar">
             <div class="ham">
-                <input id="checkbox" type="checkbox" onclick="toggleNav()"/>
+                <input id="checkbox" type="checkbox" onclick="toggleNav()" />
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
 
-            <h1 id="extraHeader">Snow Reports</h1>
+            <h1 id="exdivaHeader">Snow Reports</h1>
         </div>
         <div class="navItems">
             <div class="navLinks">
@@ -46,96 +46,45 @@
         <h1>Snow Reports</h1>
     </header>
 
-    <div class="centered">
-        <button class="selected">This Year</button><button>Last Year</button>
-    </div>
-    <div class="centered">
-        <button>Today</button><button>Next 3 Days</button><button class="selected">Next Week</button>
+    <div class="btn-holder-holder">
+        <div class="centered">
+            <button id='btnCurrent' onclick="btnCurrent()" class="selected">Current</button><button
+                onclick="btnHistorical()" id="btnHistorical">Historical</button>
+        </div>
+        <div class="centered">
+            <button id="btnToday" onclick="btnToday()">Today</button><button id="btnThree" onclick="btnThree()"
+                class="selected">Next 3 Days</button><button onclick="btnWeek()" id="btnWeek">Next Week</button>
+        </div>
     </div>
     <span class="padding">a</span>
-    <table>
-        <tr>
-            <td class='day' data-day="0">Sunday</td>
-            <td class='day' data-day="1">Monday</td>
-            <td class='day' data-day="2">Tuesday</td>
-            <td class='day' data-day="3">Wednesday</td>
-            <td class='day' data-day="4">Thursday</td>
-            <td class='day' data-day="5">Friday</td>
-            <td class='day' data-day="6">Saturday</td>
-        </tr>
-        <tr>
-            <td class="weather-icon" data-day="0"></td>
-            <td class="weather-icon" data-day="1"></td>                       
-            <td class="weather-icon" data-day="2"></td>                   
-            <td class="weather-icon" data-day="3"></td>                   
-            <td class="weather-icon" data-day="4"></td>                   
-            <td class="weather-icon" data-day="5"></td>                   
-            <td class="weather-icon" data-day="6"></td>           
-        </tr>
-        <tr>
-            <td class='weather-name bold' data-day="0"></td>
-            <td class='weather-name bold' data-day="1"></td>
-            <td class='weather-name bold' data-day="2"></td>
-            <td class='weather-name bold' data-day="3"></td>
-            <td class='weather-name bold' data-day="4"></td>
-            <td class='weather-name bold' data-day="5"></td>
-            <td class='weather-name bold' data-day="6"></td>
-        </tr>
-        <tr>
-            <td class='low-temp' data-day="0">Lowest Temp:</td>
-            <td class='low-temp' data-day="1">Lowest Temp:</td>
-            <td class='low-temp' data-day="2">Lowest Temp:</td>
-            <td class='low-temp' data-day="3">Lowest Temp:</td>
-            <td class='low-temp' data-day="4">Lowest Temp:</td>
-            <td class='low-temp' data-day="5">Lowest Temp:</td>
-            <td class='low-temp' data-day="6">Lowest Temp:</td>
-        </tr>
-        <tr>
-            <td class='temp' data-day="0">Temp:</td>
-            <td class='temp' data-day="1">Temp:</td>
-            <td class='temp' data-day="2">Temp:</td>
-            <td class='temp' data-day="3">Temp:</td>
-            <td class='temp' data-day="4">Temp:</td>
-            <td class='temp' data-day="5">Temp:</td>
-            <td class='temp' data-day="6">Temp:</td>
-        </tr>
-        <tr>
-            <td class="high-temp" data-day="0">Highest Temp:</td>
-            <td class="high-temp" data-day="1">Highest Temp:</td>
-            <td class="high-temp" data-day="2">Highest Temp:</td>
-            <td class="high-temp" data-day="3">Highest Temp:</td>
-            <td class="high-temp" data-day="4">Highest Temp:</td>
-            <td class="high-temp" data-day="5">Highest Temp:</td>
-            <td class="high-temp" data-day="6">Highest Temp:</td>
-        </tr>
-        <tr>
-            <td class="windspeed" data-day="0">Wind speed:</td>        
-            <td class="windspeed" data-day="1">Wind speed:</td>        
-            <td class="windspeed" data-day="2">Wind speed:</td>        
-            <td class="windspeed" data-day="3">Wind speed:</td>        
-            <td class="windspeed" data-day="4">Wind speed:</td>        
-            <td class="windspeed" data-day="5">Wind speed:</td>        
-            <td class="windspeed" data-day="6">Wind speed:</td>            
-        </tr>
-    </table>
+
+
+
+    <div id="weather-holder" class="grid">
+        <!-- Information is automatically generated here -->
+    </div>
+
+
+
     <span class="padding">a</span>
     <p id="error" class="centered"></p>
 
-        <script src="javascript/weather.js"></script>
-        <script src="javascript/navbar.js"></script>
+    <script src="javascript/weather.js"></script>
+    <script src="javascript/navbar.js"></script>
 
     <footer>
         <div class="boarderbox">
             <img src="assets/snowboarder-silhouette.png" id="snowboarder">
         </div>
         <div class="footer-info">
-            <h3>Registration</h3>
+            <h3>Regisdivation</h3>
             <p>Call or email our Ski School Manager: Kent Hoiberg </p>
-            <p>1001 West Main Street</p>
+            <p>1001 West Main Sdiveet</p>
             <p>Breckenridge, Colorado 80425</p>
             <p>Phone: 1-800-555-4SKI</p>
             <p>E-mail: Write to Kent</p>
-            <p>Our Sponsor: <span class="link" data-url="snow.com">snake.com</span><p>
+            <p>Our Sponsor: <span class="link" data-url="snow.com">snake.com</span>
+            <p>
         </div>
     </footer>
 
