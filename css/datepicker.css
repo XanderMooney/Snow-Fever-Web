@@ -1,0 +1,116 @@
+/*#region font*/
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@900&display=swap');
+
+body {
+    font-family: 'Heebo', 'Roboto', sans-serif;
+    color: #E1DCDC;
+}
+
+/*#endregion font*/
+
+/*#region background*/
+
+html, body {
+    height: 100%;
+    width: 100%;
+    background-color: #313131;
+}
+
+/*#endregion background*/
+
+/*#region fade in on load*/
+
+* {
+    animation: entrance 750ms; 
+}
+
+@keyframes entrance {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/*#endregion fade in on load*/
+
+/*#region force left align*/
+
+.leftalign {
+    display: inline-block;
+}
+
+/*#endregion force left align*/
+
+/*#region donkey formatting*/
+
+.calenderContainer {
+    width: 17rem;
+    gap: 0.5rem;
+    display: grid;
+    height: fit-content;
+    background-color: #313131;
+    padding: 0.5rem;
+    position: fixed;
+    z-index: 9999;
+    border: 1px solid #E1DCDC;
+}
+
+.monthContainer {
+    width: min-content;
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: repeat(7, 2rem);
+}
+
+.monthNameContainer {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: 2rem 1fr 2rem;
+}
+
+.monthButton {
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    background-color: #E1DCDC20;
+}
+
+.monthName, .year {
+    text-align: center;
+    width: 100%;
+    height: 2rem;
+    line-height: 2rem;
+    background-color: #E1DCDC20;
+}
+
+.confirmButton {
+    text-align: center;
+    width: 100%;
+    height: 2rem;
+    line-height: 2rem;
+    background-color: #E1DCDC20;
+}
+
+.dayBox {
+    aspect-ratio: 1;
+    text-align: center;
+    line-height: 2rem;
+    background-color: #E1DCDC20;
+}
+
+/*#endregion donkey formatting*/
+
+
+
+/*
+
+##===============================##
+|| guru meditation; keep it calm ||
+##===============================##
+
+*/
