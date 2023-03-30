@@ -13,6 +13,7 @@
 
     <link rel="stylesheet" href="css/shared.css"/>
     <link rel="stylesheet" href="css/events.css"/>
+    <link rel="stylesheet" href="css/datepicker.css"/>
 </head>
 
 <!---->
@@ -64,11 +65,16 @@
 
     <div class="spacer"></div>
 
-    <div class="hidePaymentInfo">
-        <>
+    <div id="hidePaymentInfo">
+        <div id="eventName">REPLACEME</div>
+        <div id="pricePerDay">REPLACEME</div>
+
+        <button id="dateButton">select days</button>
+        <div id="displayText"></div>
     </div>
 
     <script src="javascript/eventpicker.js"></script>
+    <script src="javascript/datepicker.js"></script>
 
     <footer>
         <div class="boarderbox">

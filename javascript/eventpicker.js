@@ -18,7 +18,16 @@ for (let i = 0; i < cards.length; i++) {
             }
         }
 
-        window.scrollTo(0, window.innerHeight)
+        window.scrollTo(0, window.innerHeight);
+
+        displayPaymentInfo()
     })
     
+}
+
+function displayPaymentInfo() {
+    document.getElementById("eventName").innerText = ["Mountain Retreat", "Trail Getaway"][selectedCard - 1];
+    document.getElementById("pricePerDay").innerText = ["$50", "$40"][selectedCard - 1] + " a night";
+
+    document.getElementById("hidePaymentInfo").style.visibility = "visible";
 }

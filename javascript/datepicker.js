@@ -358,8 +358,10 @@ function validateUserData() {
 function displayDifferences() {
     let display = document.getElementById("displayText");
 
-    display.innerHTML += "the start: " + monthNames[userData.selectedStartMonth] + " " + userData.selectedStartDay + " of " + userData.selectedStartYear + "</br>";
-    display.innerHTML += "the end: " + monthNames[userData.selectedEndMonth] + " " + userData.selectedEndDay + " of " + userData.selectedEndYear + "</br>";
+    display.innerHTML = "";
+
+    display.innerHTML += "Starts on: " + monthNames[userData.selectedStartMonth] + " " + userData.selectedStartDay + " of " + userData.selectedStartYear + "</br>";
+    display.innerHTML += "Ends on: " + monthNames[userData.selectedEndMonth] + " " + userData.selectedEndDay + " of " + userData.selectedEndYear + "</br>";
 
     let date1 = new Date(userData.selectedStartMonth + "/" + userData.selectedStartDay + "/" + userData.selectedStartYear);
     let date2 = new Date(userData.selectedEndMonth + "/" + userData.selectedEndDay + "/" + userData.selectedEndYear);
@@ -372,5 +374,9 @@ function displayDifferences() {
     // 86400000 is milliseconds in a day aka (1000 * 60 * 60 * 24)
 
     //(diffDays != 0 ? "s" : "") adds an s if days are over 1
-    display.innerHTML += (diffDays + 1) + " day" + (diffDays != 0 ? "s" : "") + " selected";
+    display.innerHTML += (diffDays + 1) + " day" + (diffDays != 0 ? "s" : "") + " selected<br>";
+
+    display.innerHTML += "total cost: $" + ((diffDays + 1) * [50, 40][selectedCard - 1]);
 }
+
+document.getElementById("hidePaymentInfo").style.visibility = "hidden";

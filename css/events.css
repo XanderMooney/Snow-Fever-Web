@@ -28,6 +28,9 @@ h5, h3, p, a:link, a:visited {
     aspect-ratio: 4;
     transition: filter 400ms;
     z-index: 1;
+}
+
+.card:not(.checked) > img {
     cursor: pointer;
 }
 
