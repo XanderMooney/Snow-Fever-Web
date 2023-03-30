@@ -2,13 +2,66 @@ img {
     border-radius: 0;
     object-fit: cover;
 }
+
 h5, h3, p, a:link, a:visited {
     text-decoration: none !important;    
     color: #000;
+}
+
+.cardContainer {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .card {
     padding-top: 1rem;
     padding-bottom: 1rem;
     border-radius: 0;
+    width: 100%;
+    aspect-ratio: 4;
+    transition: 400ms;
+}
+
+.card > img {
+    width: 100%;
+    aspect-ratio: 4;
+    transition: filter 400ms;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.imgOverlappingLabel {
+    aspect-ratio: 4;
+    width: 88vw;
+    text-align: center;
+    font-size: 10vw;
+    color: white;
+    user-select: none;
+    z-index: 2;
+    position: absolute;
+    transform: translateY(-81%); /* 0.9**2=0.81 */
+    transition: 400ms;
+    pointer-events: none;
+}
+
+.card.checked > .imgOverlappingLabel {
+    font-size: 10.5vw;
+    text-shadow: #FC0 1px 0 10px;
+}
+
+.card.checked > img {
+    filter: blur(2px);
+}
+
+.card.unchecked > .imgOverlappingLabel {
+    opacity: 0.5;
+}
+
+.card.unchecked > img {
+    filter: brightness(75%);
+}
+
+.card.checked {
+    transform: scale(1.05);
 }
