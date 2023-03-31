@@ -9,5 +9,6 @@ He did the following:
 - Footer
 - Other JS effects
 - Mobile support for the cards
+- Check commits for more
 
 Check the [credits.html](https://github.com/XanderMooney/Snow-Fever-Web/blob/main/credits.html) for other sources we used in this project
