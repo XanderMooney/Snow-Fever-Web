@@ -68,3 +68,19 @@ h5, h3, p, a:link, a:visited {
 .card.checked {
     transform: scale(1.05);
 }
+
+#eventName {
+    font-size: 3rem;
+}
+
+#displayText {
+    font-size: 2rem;
+}
+
+#displayText, #dateButton, #eventName, #pricePerDay {
+    margin-left: 1rem;
+}
+
+button {
+    border: 0;
+}

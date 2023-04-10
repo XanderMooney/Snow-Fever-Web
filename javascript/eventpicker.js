@@ -20,14 +20,16 @@ for (let i = 0; i < cards.length; i++) {
 
         window.scrollTo(0, window.innerHeight);
 
-        displayPaymentInfo()
+        displayPaymentInfo();
     })
     
 }
 
 function displayPaymentInfo() {
-    document.getElementById("eventName").innerText = ["Mountain Retreat", "Trail Getaway"][selectedCard - 1];
+    document.getElementById("eventName").innerText = "The " + ["Mountain Retreat", "Trail Getaway"][selectedCard - 1] + " package";
     document.getElementById("pricePerDay").innerText = ["$50", "$40"][selectedCard - 1] + " a night";
 
     document.getElementById("hidePaymentInfo").style.visibility = "visible";
+
+    document.getElementById("displayText").innerText = ""; // clear our price display when we change the event
 }
