@@ -89,7 +89,6 @@ nav {
 
 nav > .navItems {
     background-color: #C0EEF2;
-    margin-left: -0.8rem;
 }
 
 .navItems {
@@ -148,6 +147,7 @@ nav > .navItems {
 
 .navBar {
     height: 3.55rem;
+    min-width: 3.9rem;
     background-color: #C0EEF2;
 }
 
