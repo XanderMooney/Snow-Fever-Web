@@ -6,15 +6,6 @@ var extraHeader = document.getElementById("extraHeader");
 
 var scroll = 0;
 
-window.onscroll = function() {
-    if (isInViewport(header)) {
-        extraHeader.style.opacity = "0%"
-    }
-    else {
-        extraHeader.style.opacity = "100%"
-    }
-}
-
 var nav = document.getElementsByClassName("navItems")[0];
 
 var navExpandedHeight = 0;
@@ -26,7 +17,7 @@ window.onresize = calcNav();
 function calcNav() {
     nav.style.transition = "none";
     nav.style.height = "100%";
-    navExpandedHeight = nav.clientHeight;
+    navExpandedHeight = nav.clientWidth * 20;
 
     displayNav();
 }
@@ -42,10 +33,10 @@ function toggleNav() {
 function displayNav() {
     nav.style.transition = "400ms";
     if (navExpanded) {
-        nav.style.height = navExpandedHeight + "px";
+        nav.style.width = navExpandedHeight + "px";
     }
     else {
-        nav.style.height = "0";
+        nav.style.width = "0";
     }
 }
 
