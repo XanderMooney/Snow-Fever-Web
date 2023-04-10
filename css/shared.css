@@ -84,11 +84,12 @@ nav {
     top:0;
     z-index: 999;
     position:fixed;
-    width:100%;
+    height:100%;
 }
 
 nav > .navItems {
     background-color: #C0EEF2;
+    margin-left: -0.8rem;
 }
 
 .navItems {
@@ -107,6 +108,7 @@ nav > .navItems {
 .navLinks > div {
     transition: 400ms;
 }
+
 
 @media (min-aspect-ratio: 1/1) { /* on horizontally oriented devices */
     
