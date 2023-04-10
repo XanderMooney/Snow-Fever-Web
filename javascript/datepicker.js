@@ -362,11 +362,7 @@ function displayDifferences() {
 
     display.innerHTML += "Starts on: " + monthNames[userData.selectedStartMonth] + " " + userData.selectedStartDay + " of " + userData.selectedStartYear + "</br>";
     display.innerHTML += "Ends on: " + monthNames[userData.selectedEndMonth] + " " + userData.selectedEndDay + " of " + userData.selectedEndYear + "</br>";
-
-    let date1 = new Date(userData.selectedStartMonth + "/" + userData.selectedStartDay + "/" + userData.selectedStartYear);
-    let date2 = new Date(userData.selectedEndMonth + "/" + userData.selectedEndDay + "/" + userData.selectedEndYear);
-
-
+    
     const utc1 = Date.UTC(userData.selectedStartYear, userData.selectedStartMonth, userData.selectedStartDay);
     const utc2 = Date.UTC(userData.selectedEndYear, userData.selectedEndMonth, userData.selectedEndDay);
 
@@ -376,7 +372,51 @@ function displayDifferences() {
     //(diffDays != 0 ? "s" : "") adds an s if days are over 1
     display.innerHTML += (diffDays + 1) + " day" + (diffDays != 0 ? "s" : "") + " selected<br>";
 
-    display.innerHTML += "total cost: $" + ((diffDays + 1) * [50, 40][selectedCard - 1]);
+    let days = getDays(utc1, utc2);
+
+    let day;
+
+    const costPerDay = [50, 40][selectedCard - 1];
+
+    let totalCost = 0;
+
+    for (let i = 0; i < days.length; i++) {
+        day = days[i].getDay();
+
+        // Sunday - Saturday : 0 - 6
+        // 2 for Tuesday
+        // 3 for Wednesday
+        // 4 for Thursday
+
+        if (day == 2 || day == 3 || day == 4) {
+            totalCost += costPerDay * 0.9;
+            // additional 10% discount if booking for a Tuesday, Wednesday, or Thursday
+        }
+        else {
+            totalCost += costPerDay;
+        }
+    };
+
+    if (date.getMonth() < 3 || (date.getMonth() == 3 && date.getDate() < 30)) {
+        totalCost *= 0.8;
+        display.innerHTML += "booked before april 30th, 20% off<br>";
+    }
+    else if (date.getMonth() < 4 || (date.getMonth() == 4 && date.getDate() < 31))  {
+        totalCost *= 0.9;
+        display.innerHTML += "booked before may 31st, 10% off<br>";
+    }
+
+    totalCost = Number.parseFloat(totalCost).toFixed(2); //to the nearest 10th
+    
+    display.innerHTML += "total cost: $" + totalCost;
 }
 
 document.getElementById("hidePaymentInfo").style.visibility = "hidden";
+
+//https://stackoverflow.com/questions/4413590/javascript-get-array-of-dates-between-2-dates
+function getDays(start, end) {
+    for(var arr=[],dt=new Date(start); dt<=new Date(end); dt.setDate(dt.getDate()+1)){
+        arr.push(new Date(dt));
+    }
+    return arr;
+};

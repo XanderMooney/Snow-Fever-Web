@@ -78,9 +78,16 @@ h5, h3, p, a:link, a:visited {
 }
 
 #displayText, #dateButton, #eventName, #pricePerDay {
-    margin-left: 1rem;
+    margin-left: 0rem;
 }
 
 button {
     border: 0;
+}
+
+#hidePaymentInfo {
+    background-color: #ffffff70;
+    width: calc(100% - 4rem);
+    margin: auto;
+    padding: 1rem;
 }
